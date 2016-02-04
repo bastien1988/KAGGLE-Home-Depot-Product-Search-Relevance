@@ -40,6 +40,8 @@ search_terms <- unlist(strsplit(search_string, " "))
 # for(j in 1:length(search_terms))
   j <- 1
   grep(search_terms[j], name)
+  
+  #hugo
 
 
 
