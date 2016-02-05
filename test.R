@@ -1,18 +1,15 @@
-# Initialize variables
+# INITIALIZE THE VARIABLES
+# ===============================================================================================
 path <- "C:/kaggle/HomeDepot/"
 
+# LOAD DATA
+# ===============================================================================================
 # Load Attributes of products
 attr <- read.csv(paste(path,"attributes.csv", sep = ""))
 
 attr$product_uid <- as.factor(attr$product_uid)
 attr$name        <- as.factor(attr$name)
 attr$value       <- as.character(attr$value)
-
-str(attr)
-summary(attr)
-
-length(levels(attr$name))
-length(levels(attr$product_uid))
 
 # Load Product description
 prod_desc <- read.csv(paste(path,"product_descriptions.csv", sep = ""))
@@ -26,20 +23,35 @@ train <- read.csv(paste(path,"train.csv", sep = ""))
 train$product_title <- as.character(train$product_title)
 train$search_term   <- as.character(train$search_term)
 
-# Start the analysis
+# TRAIN THE MODEL
+# ===============================================================================================
 
 # for(i in 1:nrow(train))
 i             <- 1
+# Decompose search terms
 search_string <- train$search_term[i]
-p_id          <- train$product_uid[i]
-name          <- train$product_title[i]
-attr$value[]
+search_terms  <- unlist(strsplit(search_string, " "))
 
-search_terms <- unlist(strsplit(search_string, " "))
+# Get product informations
+p_id       <- train$product_uid[i]
+
+p_name     <- train$product_title[i]
+
+p_attr     <- attr[attr$product_uid == p_id, c("name", "value")]
+p_attr     <- p_attr[!is.na(p_attr$name), ]
+
+p_desc     <- prod_desc$product_description[prod_desc$product_uid == p_id]
+p_desc     <- p_desc[!is.na(p_desc)]
+
 
 # for(j in 1:length(search_terms))
   j <- 1
-  grep(search_terms[j], name)
+  grep(regex(search_terms[j]), p_name)
+  
+  
+  
+  
+  
   
 <<<<<<< HEAD
   
