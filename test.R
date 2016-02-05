@@ -41,4 +41,11 @@ search_terms <- unlist(strsplit(search_string, " "))
   j <- 1
   grep(search_terms[j], name)
   
+<<<<<<< HEAD
   
+=======
+  #hugo
+
+
+
+>>>>>>> 1d9f0600a0c2a58529bc25aabfbf021e1b968f24
