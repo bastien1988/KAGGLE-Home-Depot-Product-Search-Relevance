@@ -12,10 +12,10 @@ attr$name        <- as.factor(attr$name)
 attr$value       <- as.character(attr$value)
 
 # Load Product description
-prod_desc <- read.csv(paste(path,"product_descriptions.csv", sep = ""))
+desc <- read.csv(paste(path,"product_descriptions.csv", sep = ""))
 
-prod_desc$product_uid         <- as.factor(prod_desc$product_uid)
-prod_desc$product_description <- as.character(prod_desc$product_description)
+desc$product_uid         <- as.factor(desc$product_uid)
+desc$product_description <- as.character(desc$product_description)
 
 # Load Training data
 train <- read.csv(paste(path,"train.csv", sep = ""))
@@ -40,7 +40,7 @@ p_name     <- train$product_title[i]
 p_attr     <- attr[attr$product_uid == p_id, c("name", "value")]
 p_attr     <- p_attr[!is.na(p_attr$name), ]
 
-p_desc     <- prod_desc$product_description[prod_desc$product_uid == p_id]
+p_desc     <- desc$product_description[desc$product_uid == p_id]
 p_desc     <- p_desc[!is.na(p_desc)]
 
 
